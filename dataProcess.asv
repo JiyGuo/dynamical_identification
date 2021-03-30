@@ -1,0 +1,44 @@
+% 数据预处理
+clear;clc;close all;
+% 加载数据
+prefix = '20210329_1';
+filename = '\filt_qdd.mat';
+file = [prefix,filename];
+load(file);
+filt_qdd = ans(2:end,:);
+clear ans;
+
+filename = '\filt_qd.mat';
+file = [prefix,filename];
+load(file);
+filt_qd = ans(2:end,:);
+clear ans;
+
+filename = '\filt_q.mat';
+file = [prefix,filename];
+load(file);
+filt_q = ans(2:end,:);
+clear ans;
+
+filename = '\torque.mat';
+file = [prefix,filename];
+load(file);
+for i=1:6
+    filt_t(i,:) = smooth(ans(i+1,:),30)';
+end
+clear ans;
+
+file = 'data\20210329_1.mat';
+save(file)
+
+% filename = '\filt_q1.mat';
+% file = [prefix,filename];
+% save(file,'filt_q')
+% 
+% filename = '\filt_qd1.mat';
+% file = [prefix,filename];
+% save(file,'filt_qd')
+% 
+% filename = '\filt_qdd1.mat';
+% file = [prefix,filename];
+% save(file,'filt_qdd')

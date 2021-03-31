@@ -108,9 +108,11 @@ for i=6:-1:1
     
     f(:,i) = i_iadd1_R * f(:,i+1) + F(:,i);
     n(:,i) = i_iadd1_R * n(:,i+1) + N(:,i) + S_w(i_P_iadd1) * (i_iadd1_R * f(:,i+1)) ;
-    n(3,i) = n(3,i) + I_drive(i)*qdd(i) + fc(i)*sign(qd(i)) + fv(i)*qd(i);
     
-    torque(i) = n(3,i);
+    % n(3,i) = n(3,i) + I_drive(i)*qdd(i) + fc(i)*sign(qd(i)) + fv(i)*qd(i);
+    % torque(i) = n(3,i);
+    
+    torque(i) = n(3,i)+I_drive(i)*qdd(i) + fc(i)*sign(qd(i)) + fv(i)*qd(i);
 end
 end
 

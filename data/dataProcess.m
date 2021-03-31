@@ -1,7 +1,7 @@
 % 数据预处理
 clear;clc;close all;
 % 加载数据
-prefix = '20210329_1';
+prefix = '20210331_2';
 filename = '\filt_qdd.mat';
 file = [prefix,filename];
 load(file);
@@ -24,21 +24,13 @@ filename = '\torque.mat';
 file = [prefix,filename];
 load(file);
 for i=1:6
-    filt_t(i,:) = smooth(ans(i+1,:),30)';
+    filt_t(i,:) = smooth(ans(i+1,:),50)';
 end
 clear ans;
 
-file = 'data\20210329_1.mat';
-save(file)
+clear file;
+clear filename;
+clear i;
+clear prefix;
+save('data\20210331_2.mat')
 
-% filename = '\filt_q1.mat';
-% file = [prefix,filename];
-% save(file,'filt_q')
-% 
-% filename = '\filt_qd1.mat';
-% file = [prefix,filename];
-% save(file,'filt_qd')
-% 
-% filename = '\filt_qdd1.mat';
-% file = [prefix,filename];
-% save(file,'filt_qdd')

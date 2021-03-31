@@ -1,7 +1,7 @@
 function [ q,qd,qdd ] = trajectory_function(x,time)
 traj_wf = 0.2*pi; % 基频
-global dofs
-% dof = 6;          % 自由度
+% global dofs
+dofs = 6;          % 自由度
 traj_order = 5;   % 阶数 
 
 q=zeros(dofs,1);
@@ -9,6 +9,7 @@ qd=zeros(dofs,1);
 qdd=zeros(dofs,1);
 numParam=traj_order*2+1; % 总共多少个参数
 % 参数顺序按照q0，a1，b1，a2...a5，b5的顺序
+
 for d=1:dofs
    m=numParam*(d-1);
    q(d)=x(m+1);

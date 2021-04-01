@@ -35,8 +35,8 @@ Aeq(1:3:18,:) = [];
 beq = zeros(12,1);
 
 %求解
-for i = 1:1
-    opt_x0 = 1.05 * rand(66,1); %初解
+for i = 1:3
+    opt_x0 = 1.05 * rand(66,1)+0.1; %初解
     [opt_x(:,i),opt_fval(i)] = fmincon(@Optimaltrajectory_object_fun,opt_x0,AA,bb,Aeq,beq);
     if opt_fval(i)<10.0
         break;
